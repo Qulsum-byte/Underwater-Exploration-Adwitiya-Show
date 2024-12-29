@@ -75,6 +75,30 @@
             color: #ddd;
             transform: translateY(-3px);
         }
+        .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    color: #ffeb3b;
+    font-size: 20px;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 50s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
  footer {
     background-color: #2f4f7f;
     color: #fff;
@@ -128,78 +152,186 @@
             text-align: center;
             clear: both;
         }
+         /* Hero Section */
+        .hero {
+            background-image: url('https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater5.jpg');
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero button {
+            background-color: #380fbf;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero button:hover {
+            background-color: #101211;
+        }
+
+        /* Gallery Section */
+        #image-upload-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #image-upload-input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        #image-upload-button {
+            background-color: #4b12e5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        #image-upload-button:hover {
+            background-color: #1b1d1b;
+        }
+
+        #gallery-search-form {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #gallery-search-input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        #gallery-search-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #1c48cd;
+            border: none;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+        }
+
+        #gallery-search-button:hover {
+            background-color: #101111;
+        }
+
+        #gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .gallery-item p {
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-radius: 0 0 10px 10px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .highlight {
+            background-color: #ffeb3b;
+        }
+
+        /* Modal for Enlarged Images */
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
 
-        .enlarged-image {
+        .modal img {
             max-width: 80%;
             max-height: 80%;
-            object-fit: contain;
-        }
-
-        .button {
-            background-color: #2ecc71;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            margin-top: 20px;
-            width: 200px;
-            max-width: 100%;
-            height: 50px;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .button:hover {
-            background-color: #1abc9c;
-        }
-
-        .gallery-container {
-            display: none;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .gallery-image {
-            width: 30%;
-            margin: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .gallery-image img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px 10px 0 0;
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #333;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 50%;
         }
 
-        .gallery-checkbox {
-            display: none;
-        }
-
-        #gallery-checkbox:checked+.gallery-container {
-            display: flex;
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 1);
         }
     </style>
 </head>
 
 <body>
-    <!-- Header Section with News Marquee -->
     <div class="header">
         <div class="container">
-            <b>NEWS :</b>
-            <marquee>Intelligence plus curiosity—that is the root of true discovery.</marquee>
+            <b>ANNOUNCEMENTS :</b>
+            <div class="marquee">
+                <div class="marquee-content">
+                    Intelligence plus curiosity—that is the root of true discovery. &nbsp;&nbsp;|&nbsp;&nbsp;
+                    Explore the depths of the ocean and uncover its mysteries. &nbsp;&nbsp;|&nbsp;&nbsp;
+                    Don't miss our upcoming underwater exploration webinar! &nbsp;&nbsp;|&nbsp;&nbsp;
+                    Discover marine life like never before—start your adventure today!
+                </div>
+            </div>
         </div>
     </div>
     
@@ -213,188 +345,114 @@
             <li class="nav-item"><a href="about.html">About</a></li>
         </ul>
     </nav>
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Explore the Wonders of the Ocean</h1>
+    <button onclick="toggleGallery()">View Gallery</button>
+</div>
 
+<!-- Gallery Section -->
+<form id="image-upload-form">
+    <input type="file" id="image-upload-input" accept="image/*">
+    <button type="button" id="image-upload-button" onclick="uploadImage()">Upload Image</button>
+</form>
 
-    <!-- Hero Section -->
-    <div
-        style="background-image: url('https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater5.jpg'); height: 50%; background-size: contain; background-position: center; display: flex; justify-content: center; align-items: center; flex-direction: column; color: #fff;">
-        <div style="margin-top: 20vh; text-align: center;">
-            <h1 style="font-size: 48px;">Explore the Wonders of the Ocean</h1>
-            <button class="button" onclick="toggleGallery()">View Gallery</button>
-        </div>
+<!-- Gallery search bar -->
+<form id="gallery-search-form">
+    <input type="search" id="gallery-search-input" placeholder="Search images...">
+    <button type="button" id="gallery-search-button" onclick="searchImages()">Search</button>
+</form>
+
+<!-- Gallery container -->
+<div id="gallery-container">
+    <div class="gallery-item" id="image1">
+        <img src="images/Octopus.jpg" alt="Octopus">
+        <p>Octopus</p>
     </div>
-
-    <!-- Gallery Section -->
-    <!-- Image upload form -->
-    <form id="image-upload-form" style="margin-top: 20px;">
-        <input type="file" id="image-upload-input" accept="image/*" style="padding: 10px; font-size: 16px;">
-        <button id="image-upload-button"
-            style="background-color: #2ecc71; color: #fff; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">Upload
-            Image</button>
-    </form>
-
-    <!-- Gallery search bar -->
-    <form id="gallery-search-form">
-        <input type="search" id="gallery-search-input" placeholder="Search images...">
-        <button id="gallery-search-button" onclick="searchImages()">Search</button>
-    </form>
-
-    <!-- Gallery container -->
-    <div id="gallery-container" style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center;">
-
-        <!-- Sample image -->
-        <div id="image1" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Octopus.jpg" alt="Image 1"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 1</p>
-        </div>
-        <div id="image2" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/dolphin.jpg" alt="Image 2"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 2</p>
-        </div>
-        <div id="image3" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater7.jpg" alt="Image 3"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 3</p>
-        </div>
-        <div id="image4" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater8.webp" alt="Image 4"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 4</p>
-        </div>
-        <div id="image5" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/underwater9.jpg" alt="Image 5"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 5</p>
-        </div>
-        <div id="image6" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater%20home%20page%20bg.jpg"
-                alt="Image 6" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 6</p>
-        </div>
-        <div id="image7" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater10.jpg" alt="Image 7"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 7</p>
-        </div>
-        <div id="image8" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater11.jpg" alt="Image 8"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 8</p>
-        </div>
-        <div id="image9" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater12.jpg" alt="Image 9"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 9</p>
-        </div>
-        <div id="image10" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater13.jpg" alt="Image 10"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 10</p>
-        </div>
-        <div id="image11" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater14.jpg" alt="Image 11"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 11</p>
-        </div>
-        <div id="image12" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater15.jpg" alt="Image 12"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 12</p>
-        </div>
-        <div id="image13" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater16.jpg" alt="Image 13"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 13</p>
-        </div>
-        <div id="image14" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater17.jpg" alt="Image 14"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 14</p>
-        </div>
-        <div id="image15" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater18.jpg" alt="Image 15"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 15</p>
-        </div>
-        <div id="image16" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater19.webp" alt="Image 16"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 16</p>
-        </div>
-        <div id="image17" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater20.jpg" alt="Image 17"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 17</p>
-        </div>
-        <div id="image18" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater21.jpg" alt="Image 18"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 18</p>
-        </div>
-        <div id="image19" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater22.jpg" alt="Image 19"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 19</p>
-        </div>
-        <div id="image20" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater23.png" alt="Image 20"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 20</p>
-        </div>
-        <div id="image21" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater24.webp" alt="Image 21"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 21</p>
-        </div>
-        <div id="image22" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater25.jpg" alt="Image 22"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 22</p>
-        </div>
-        <div id="image23" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater26.jpg" alt="Image 23"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 23</p>
-        </div>
-        <div id="image24" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater27.jpg" alt="Image 24"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 24</p>
-        </div>
-        <div id="image25" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater28.jpg" alt="Image 25"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 25</p>
-        </div>
-        <div id="image26" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater29.jpg" alt="Image 26"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 26</p>
-        </div>
-        <div id="image27" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater30.jpg" alt="Image 27"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 27</p>
-        </div>
-        <div id="image28" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater31.jpg" alt="Image 28"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 28</p>
-        </div>
-        <div id="image29" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater32.jpg" alt="Image 29"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 29</p>
-        </div>
-        <div id="image30" style="margin: 20px; width: 200px;">
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ut24t/Underwater33.jpg" alt="Image 30"
-                style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px 10px 0 0;">
-            <p style="padding: 10px; background-color: #f7f7f7; border-radius: 0 0 10px 10px;">Image 30</p>
-        </div>
-
+    <div class="gallery-item" id="image2">
+        <img src="images/Dolphin1.jpg" alt="Dolphin">
+        <p>Dolphin</p>
     </div>
+    <div class="gallery-item" id="image3">
+        <img src="images/shark.jpg" alt="Shark">
+        <p>Shark</p>
+    </div>
+    <div class="gallery-item" id="image4">
+        <img src="images/whale.jpg" alt="Whale">
+        <p>Whale</p>
+    </div>
+    <div class="gallery-item" id="image5">
+        <img src="images/Sea Turtle.jpg" alt="Sea Turtle">
+        <p>Sea Turtle</p>
+    </div>
+    <div class="gallery-item" id="image6">
+        <img src="images/jellyfish.jpg" alt="Jellyfish">
+        <p>Jellyfish</p>
+    </div>
+    <div class="gallery-item" id="image7">
+        <img src="images/Steller-Sea-Lion.jpg" alt="Sea Lion">
+        <p>Sea Lion</p>
+    </div>
+    <div class="gallery-item" id="image8">
+        <img src="images/shark.jpg" alt="Starfish">
+        <p>Starfish</p>
+    </div>
+    <div class="gallery-item" id="image9">
+        <img src="images/Seahorse.jpg" alt="Sea Horse">
+        <p>Sea Horse</p>
+    </div>
+    <div class="gallery-item" id="image10">
+        <img src="images/crab.jpg" alt="Crab">
+        <p>Crab</p>
+    </div>
+    <div class="gallery-item" id="image11">
+        <img src="images/otter.jpg" alt="Otter">
+        <p>Otter</p>
+    </div>
+    <div class="gallery-item" id="image12">
+        <img src="images/Sea Eagle.jpeg" alt="Sea Eagle">
+        <p>Sea Eagle</p>
+    </div>
+    <div class="gallery-item" id="image13">
+        <img src="images/Penguin.jpeg" alt="Penguin">
+        <p>Penguin</p>
+    </div>
+    <div class="gallery-item" id="image14">
+        <img src="images/Dugong.jpg" alt="Dugong">
+        <p>Dugong</p>
+    </div>
+    <div class="gallery-item" id="image15">
+        <img src="images/Seal.jpeg" alt="Seal">
+        <p>Seal</p>
+    </div>
+    <div class="gallery-item" id="image16">
+        <img src="images/Anglerfish.jpg" alt="Anglerfish">
+        <p>Anglerfish</p>
+    </div>
+    <div class="gallery-item" id="image17">
+        <img src="images/butterflyfish.jpeg" alt="Butterfly Fish">
+        <p>Butterfly Fish</p>
+    </div>
+    <div class="gallery-item" id="image18">
+        <img src="images/blue whale.jpeg" alt="Blue Whale">
+        <p>Blue Whale</p>
+    </div>
+    <div class="gallery-item" id="image19">
+        <img src="images/squid.jpg" alt="Squid">
+        <p>Squid</p>
+    </div>
+    <div class="gallery-item" id="image20">
+        <img src="images/giant-manta-ray.jpg" alt="Manta Ray">
+        <p>Manta Ray</p>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal" style="display: none;">
+    <button class="close-button" onclick="closeModal()">X</button>
+    <img id="modal-image" src="" alt="">
+</div>
+
     <script>
         function searchImages() {
             var searchQuery = document.getElementById("gallery-search-input").value.toLowerCase();
@@ -452,14 +510,45 @@
 
 
     <script>
-        function toggleGallery() {
-            var gallery = document.getElementById("gallery");
-            if (gallery.style.display === "flex") {
-                gallery.style.display = "none";
-            } else {
-                gallery.style.display = "flex";
-            }
+       let modal = document.getElementById('modal');
+        let modalImage = document.getElementById('modal-image');
+
+        function openModal(imageUrl) {
+            modal.style.display = 'flex';
+            modalImage.src = imageUrl;
         }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function toggleGallery() {
+            const gallery = document.getElementById('gallery-container');
+            gallery.style.display = gallery.style.display === 'none' ? 'grid' : 'none';
+        }
+
+        function searchImages() {
+            const searchQuery = document.getElementById('gallery-search-input').value.toLowerCase();
+            const items = document.querySelectorAll('.gallery-item');
+
+            items.forEach(item => {
+                const title = item.querySelector('p').textContent.toLowerCase();
+                if (title.includes(searchQuery)) {
+                    item.classList.remove('highlight');
+                    item.style.display = 'block';
+                } else {
+                    item.classList.add('highlight');
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Add click event listeners to each image to open in modal
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                openModal(img.src);
+            });
+        });
     </script>
     <!-- Footer Section -->
     <footer

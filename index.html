@@ -72,6 +72,30 @@
             color: #ddd;
             transform: translateY(-3px);
         }
+        .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    color: #ffeb3b;
+    font-size: 20px;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 50s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
 
         .slideshow-container {
             position: relative;
@@ -229,11 +253,17 @@
 
 <body>
 
-    <!-- Header Section with News Marquee -->
     <div class="header">
         <div class="container">
-            <b>NEWS :</b>
-            <marquee>Intelligence plus curiosity—that is the root of true discovery.</marquee>
+            <b>ANNOUNCEMENTS :</b>
+            <div class="marquee">
+                <div class="marquee-content">
+                    Intelligence plus curiosity—that is the root of true discovery. &nbsp;&nbsp;|&nbsp;&nbsp;
+                    Explore the depths of the ocean and uncover its mysteries. &nbsp;&nbsp;|&nbsp;&nbsp;
+                    Don't miss our upcoming underwater exploration webinar! &nbsp;&nbsp;|&nbsp;&nbsp;
+                    Discover marine life like never before—start your adventure today!
+                </div>
+            </div>
         </div>
     </div>
 
@@ -358,31 +388,8 @@
             <p>&copy; 2024 Underwater Exploration. All rights reserved.</p>
         </div>
     </footer>
+<script src="script.js"></script>
 
-
-    <script>
-        var slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            setTimeout(showSlides, 2000);
-        }
-    </script>
 
 </body>
 

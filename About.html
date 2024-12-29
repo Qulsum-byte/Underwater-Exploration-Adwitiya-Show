@@ -124,6 +124,30 @@
             text-align: center;
             clear: both;
         }
+        .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    color: #ffeb3b;
+    font-size: 20px;
+}
+
+.marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 50s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
         .container {
             max-width: 1200px;
             margin: 2em auto;
@@ -174,13 +198,19 @@
 </head>
 
 <body>
-    <!-- Header Section with News Marquee -->
-    <div class="header">
-        <div class="container">
-            <b>NEWS :</b>
-            <marquee>Intelligence plus curiosity—that is the root of true discovery.</marquee>
+<div class="header">
+    <div class="container">
+        <b>ANNOUNCEMENTS :</b>
+        <div class="marquee">
+            <div class="marquee-content">
+                Intelligence plus curiosity—that is the root of true discovery. &nbsp;&nbsp;|&nbsp;&nbsp;
+                Explore the depths of the ocean and uncover its mysteries. &nbsp;&nbsp;|&nbsp;&nbsp;
+                Don't miss our upcoming underwater exploration webinar! &nbsp;&nbsp;|&nbsp;&nbsp;
+                Discover marine life like never before—start your adventure today!
+            </div>
         </div>
     </div>
+</div>
     
     <!-- Navigation Bar -->
     <nav class="nav-bar">
