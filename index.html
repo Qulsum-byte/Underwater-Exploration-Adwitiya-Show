@@ -5,21 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underwater Exploration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            background-color: #2f4f7f;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header b {
+            font-weight: bold;
+        }
+
+        marquee {
+            color: #ffeb3b;
+            font-size: 20px;
+            font-weight: normal;
+        }
+
         .nav-bar {
             background-color: #2f4f7f;
-            /* Dark blue background color */
             padding: 1em;
-            border-bottom: 2px solid #333;
-            /* Dark gray border */
             position: sticky;
-            /* Sticky navigation bar */
             top: 0;
-            /* Stick to the top of the page */
             z-index: 1000;
-            /* Ensure the navigation bar stays on top */
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            /* Add a subtle shadow effect */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .nav-bar:hover {
+            background-color: #1e3d59;
         }
 
         .nav-menu {
@@ -27,97 +56,71 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: space-between;
-        }
-
-        .nav-item {
-            margin-right: 20px;
-            position: relative;
-            /* Add relative positioning for dropdown menus */
+            justify-content: center;
+            gap: 20px;
         }
 
         .nav-item a {
             color: #fff;
-            /* White text color */
             text-decoration: none;
-            transition: color 0.2s ease;
+            font-size: 18px;
             padding: 10px;
-            /* Add padding for a more comfortable click area */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .nav-item a:hover {
-            color: #ccc;
-            /* Light gray hover color */
-            background-color: #444;
-            /* Dark gray background color on hover */
+            color: #ddd;
+            transform: translateY(-3px);
         }
 
-        .nav-item.active a {
-            color: #fff;
-            /* White text color for active menu item */
-            background-color: #555;
-            /* Dark gray background color for active menu item */
-        }
-
-        .nav-item.active: after * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Verdana, sans-serif;
+        .slideshow-container {
+            position: relative;
+            margin: 20px auto;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .mySlides {
             display: none;
         }
 
-        img {
-            vertical-align: middle;
-        }
-
-        /* Slideshow container */
-        .slideshow-container {
-            max-width: 1000px;
-            position: relative;
-            margin: auto;
-        }
-
-        /* Caption text */
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
+        .mySlides img {
             width: 100%;
-            text-align: center;
+            border-radius: 10px;
+            transition: opacity 1s ease-in-out;
         }
 
-        /* Number text (1/3 etc) */
-        .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
+        .slideshow-container:hover .mySlides img {
+            transform: scale(1.05);
+        }
+
+        .text {
             position: absolute;
-            top: 0;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
-        /* The dots/bullets/indicators */
         .dot {
             height: 15px;
             width: 15px;
-            margin: 0 2px;
+            margin: 0 5px;
             background-color: #bbb;
             border-radius: 50%;
             display: inline-block;
-            transition: background-color 0.6s ease;
+            transition: background-color 0.3s ease;
         }
 
         .active {
             background-color: #717171;
         }
 
-        /* Fading animation */
         .fade {
             animation-name: fade;
             animation-duration: 1.5s;
@@ -125,168 +128,216 @@
 
         @keyframes fade {
             from {
-                opacity: .4
+                opacity: .4;
             }
 
             to {
-                opacity: 1
+                opacity: 1;
             }
-        }
-
-        /* On smaller screens, decrease text size */
-        @media only screen and (max-width: 300px) {
-            .text {
-                font-size: 11px
-            }
-        }
-
-        .firstsection {
-            box-shadow: aliceblue;
-            background-color: cyan;
-            justify-content: flex-end;
-            justify-content: center;
         }
 
         .about-section {
-            text-align: center;
             padding: 60px 20px;
-            margin-top: 25px;
+            text-align: center;
+            background-color: #e6f7ff;
         }
 
-        .header {
-            background-color: lemonchiffon;
+        .about-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #2f4f7f;
+        }
+
+        .firstsection {
+            padding: 40px;
+            background-color: #e6f7ff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        .w3-row-padding article {
+            transition: transform 0.3s ease;
+        }
+
+        .w3-row-padding article:hover {
+            transform: scale(1.05);
+        }
+
+       footer {
+    background-color: #2f4f7f;
+    color: #fff;
+    padding: 2em;
+    width: 100%;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+    clear: both; /* Added to clear floating elements */
+}
+
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer .footer-content>div {
+            flex-basis: 30%;
+            margin-right: 20px;
+        }
+
+        footer .footer-content h3 {
+            margin-bottom: 10px;
+        }
+
+        footer .footer-content a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .footer-content a:hover {
+            color: #ffeb3b;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #3498db;
+        }
+
+        footer .copyright {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            clear: both;
+        }
+
+        /* Adjust image sizes for Dolphin, Seahorse, and Shark */
+        .w3-row-padding article img {
+            width: 90%;
+            max-width: 350px;
+            margin-bottom: 10px;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Header Section with News Marquee -->
     <div class="header">
         <div class="container">
-            <b> NEWS : </b>
-            <marquee> Intelligence plus curiosity-that is the root of true discovery. </marquee>
+            <b>NEWS :</b>
+            <marquee>Intelligence plus curiosity—that is the root of true discovery.</marquee>
         </div>
     </div>
+
+    <!-- Navigation Bar -->
     <nav class="nav-bar">
         <ul class="nav-menu">
             <li class="nav-item"><a href="index.html">Home</a></li>
             <li class="nav-item"><a href="gallery.html">Gallery</a></li>
             <li class="nav-item"><a href="fun-learning.html">Fun Learning</a></li>
             <li class="nav-item"><a href="caution.html">Caution</a></li>
-            <li class="nav-item"><a href="About.html">About</a></li>
+            <li class="nav-item"><a href="about.html">About</a></li>
         </ul>
     </nav>
-    <div style="height: 5px; background-image: white; animation: animate 5s infinite;"></div>
-    <nav
-        style="background-image: linear-gradient(to bottom, #2f4f7f, #3498db); background-size: 100% 300px; background-position: 0% 100%; height: 300px; display: flex; justify-content: center; align-items: center; color: #fff;">
-        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <h1 style="font-size: 48px; font-weight: bold; margin-bottom: 10px;">Underwater Exploration</h1>
-            <p style="font-size: 18px; font-style: italic; margin-bottom: 20px;">"We are tied to the ocean. And when we
-                go back to the sea, whether it is to sail or to watch - we are going back from whence we came." - John
-                F. Kennedy</p>
-        </div>
-    </nav>
-    <div style="height: 5px; background-image: white; animation: animate 5s infinite;"></div>
+
+    <!-- Slideshow Section -->
     <div class="slideshow-container">
         <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater4.jpg" style="width:100%">
+            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater4.jpg" alt="Underwater Image 1">
+            <div class="text">Dive into the Blue</div>
         </div>
         <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater3.webp" style="width:100%">
+            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater3.webp" alt="Underwater Image 2">
+            <div class="text">The Depths Await</div>
         </div>
         <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater6.jpg" style="width:100%">
+            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater6.jpg" alt="Underwater Image 3">
+            <div class="text">Explore the Unknown</div>
         </div>
-
     </div>
-    <br>
 
+    <!-- Dot Navigation for Slideshow -->
     <div style="text-align:center">
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
     </div>
 
-    <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
-    </script>
-    <div style="height: 5px; background-image: white; animation: animate 5s infinite;"></div>
+    <!-- About Section -->
     <div class="firstsection">
-        <section class="w3-container w3-center w3-content" style="max-width:1000px">
-            <u>
-                <h2 class="w3-wide">Info about Web</h2>
-            </u>
-            <h2 class="w3-opacity"><i>We love water</i></h2>
-            <h3 class="w3-justify">Hello dear user, welcome to Underwater exploration,here you have the oppurtunity to
-                learn about underwater and this may also help you to develop a new hobby.Think about this website like a
-                treasurehunt game where you can explore just as much as you want.Have fun and never stop
-                learning!!!Imagine yourself standing at the edge of a vast, mysterious ocean. The water's surface
-                glimmers like a canvas of diamonds, inviting you to explore the secrets beneath. Take a deep breath, and
-                let's embark on an underwater journey together!As we descend into the crystal-clear waters, the pressure
-                increases, and the light from above grows dimmer. But don't worry, your eyes will adjust, and you'll
-                start to notice the incredible sights around you.</h3>
+        <section class="about-section">
+            <h2>Welcome to the World of Underwater Exploration</h2>
+            <p class="w3-justify">Here you have the oppurtunity to learn about
+                underwater and this may also help you to develop a new hobby.Think about this website like a treasurehunt game where
+                you can explore just as much as you want.Have fun and never stop learning!!!Imagine yourself standing at the edge of
+                a vast, mysterious ocean. The water's surface glimmers like a canvas of diamonds, inviting you to explore the
+                secrets beneath. Take a deep breath, and let's embark on an underwater journey together!As we descend into the
+                crystal-clear waters, the pressure increases, and the light from above grows dimmer. But don't worry, your eyes will
+                adjust, and you'll start to notice the incredible sights around you.</p>
         </section>
     </div>
-    <section class="w3-row-padding w3-center w3-light-grey">
-        <article class="w3-third">
-            <h2><u>Dolphin</u></h2>
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Dolphi.jpg" alt="Random Name" style="width:50%"
-                ,style="height:fit-content">
-            <h2>Dolphin is the smartest.</h2>
-        </article>
-        <article class="w3-third">
-            <h2><u>Seahorse</u></h2>
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/Seahorse.jpg" alt="Random Name"
-                style="width:80%, height:initial">
-            <h2>Seahorse is the prettiest.</h2>
-        </article>
-        <article class="w3-third">
-            <h2><u>Tiger-shark</u></h2>
-            <img src="https://assets.onecompiler.app/4346uf7cm/4346ueenw/shark.webp" alt="Random Name" style="width:30%"
-                , style="height:fit-content">
-            <h2>Tiger-shark is the most dangerous.</h2>
-        </article>
+
+    <!-- Info Section -->
+    <section style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 50px;">
+        <!-- Dolphin Image Box -->
+        <div
+            style="flex-basis: 30%; text-align: center; margin-bottom: 30px; padding: 15px; border: 2px solid #ccc; border-radius: 10px; background-color: #f1f1f1; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <img src="images/dolphin.jpg" alt="Dolphin" style="max-width: 100%; height: auto; border-radius: 10px;">
+            <h3 style="margin-top: 15px;">Dolphin</h3>
+            <p>Learn about the intelligent and friendly dolphin, the master of the ocean waves.</p>
+        </div>
+        <!-- Shark Image Box -->
+        <div
+            style="flex-basis: 30%; text-align: center; margin-bottom: 30px; padding: 15px; border: 2px solid #ccc; border-radius: 10px; background-color: #f1f1f1; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <img src="images/shark.jpg" alt="Shark" style="max-width: 100%; height: auto; border-radius: 10px;">
+            <h3 style="margin-top: 15px;">Shark</h3>
+            <p>Discover the powerful predator of the ocean, the fascinating shark.</p>
+        </div>
+        <!-- Sea Horse Image Box -->
+        <div
+            style="flex-basis: 30%; text-align: center; margin-bottom: 30px; padding: 15px; border: 2px solid #ccc; border-radius: 10px; background-color: #f1f1f1; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <img src="images/Seahorse.jpg" alt="Seahorse" style="max-width: 100%; height: auto; border-radius: 10px;">
+            <h3 style="margin-top: 15px;">Seahorse</h3>
+            <p>Seahorse is the prettiest.</p>
+        </div>
     </section>
+
+
+    <!-- Footer Section -->
     <footer
-        style="background-color: #2f4f7f; color: #fff; padding: 2em; width: 100%; box-shadow: 0px -2px 4px rgba(0,0,0,0.1);">
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;">
-            <div style="flex-basis: 30%; margin-right: 20px;">
+        style="background-color: #2f4f7f; color: #fff; padding: 2em 0; width: 100%; box-shadow: 0px -2px 4px rgba(0,0,0,0.1); clear: both;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap;">
+            <div style="flex-basis: 30%; margin-right: 20px; padding: 10px;">
                 <h3>About Us</h3>
-                <p>This is a Underwater exploration website.This will help you to know more about the unknown inside
-                    water and reminds you to not only "fly" but also "dive".</p>
+                <p>This is an Underwater exploration website. This will help you to know more about the unknown inside water
+                    and reminds you to not only "fly" but also "dive".</p>
                 <ul style="list-style: none; margin: 0; padding: 0;">
-                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
-                            style="color: #fff; text-decoration: none;"><i class="fa fa-facebook"
-                                aria-hidden="true"></i></a></li>
-                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
-                            style="color: #fff; text-decoration: none;"><i class="fa fa-twitter"
-                                aria-hidden="true"></i></a></li>
-                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
-                            style="color: #fff; text-decoration: none;"><i class="fa fa-instagram"
-                                aria-hidden="true"></i></a></li>
+                    <li style="display: inline-block; margin-right: 10px;">
+                        <a href="#" target="_blank" style="color: #fff; text-decoration: none;">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li style="display: inline-block; margin-right: 10px;">
+                        <a href="#" target="_blank" style="color: #fff; text-decoration: none;">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li style="display: inline-block; margin-right: 10px;">
+                        <a href="#" target="_blank" style="color: #fff; text-decoration: none;">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div style="flex-basis: 30%; margin-right: 20px;">
+            <div style="flex-basis: 30%; margin-right: 20px; padding: 10px;">
                 <h3>Quick Links</h3>
                 <ul style="list-style: none; margin: 0; padding: 0;">
                     <li><a href="index.html" style="color: #fff; text-decoration: none;">Home</a></li>
@@ -296,7 +347,7 @@
                     <li><a href="about.html" style="color: #fff; text-decoration: none;">About</a></li>
                 </ul>
             </div>
-            <div style="flex-basis: 30%;">
+            <div style="flex-basis: 30%; padding: 10px;">
                 <h3>Contact Us</h3>
                 <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:sourav.show@gmail.com"
                         style="color: #fff; text-decoration: none;">info@example.com</a></p>
@@ -307,6 +358,32 @@
             <p>&copy; 2024 Underwater Exploration. All rights reserved.</p>
         </div>
     </footer>
+
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 2000);
+        }
+    </script>
+
 </body>
 
 </html>
