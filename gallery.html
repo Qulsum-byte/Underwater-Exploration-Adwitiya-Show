@@ -152,20 +152,22 @@
             text-align: center;
             clear: both;
         }
-         /* Hero Section */
         .hero {
-            background-image: url('https://assets.onecompiler.app/4346uf7cm/4346ueenw/Underwater5.jpg');
-            height: 60vh;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
+    background-image: url('images/underwater7.jpg');
+    height: 100vh; /* Adjust based on how much of the image you want visible */
+    background-size: cover; /* Ensures the entire image fits within the container */
+    background-position: center; /* Centers the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    position: relative;
+    background-repeat: no-repeat; /* Prevents repeating the background */
+}
+
+
 
         .hero h1 {
             font-size: 48px;
@@ -453,103 +455,135 @@
     <img id="modal-image" src="" alt="">
 </div>
 
-    <script>
-        function searchImages() {
-            var searchQuery = document.getElementById("gallery-search-input").value.toLowerCase();
-            var images = document.getElementById("gallery-container").children;
+   <script>
+    // Function to search images based on user input
+    function searchImages() {
+        const searchQuery = document.getElementById('gallery-search-input').value.toLowerCase();
+        const items = document.querySelectorAll('.gallery-item');
 
-            for (var i = 0; i < images.length; i++) {
-                var imageName = images[i].textContent.toLowerCase();
-
-                if (imageName.includes(searchQuery)) {
-                    images[i].classList.add("highlight");
-                } else {
-                    images[i].classList.remove("highlight");
-                }
+        items.forEach(item => {
+            const title = item.querySelector('p').textContent.toLowerCase();
+            if (title.includes(searchQuery)) {
+                item.style.display = 'block'; // Show matching items
+            } else {
+                item.style.display = 'none'; // Hide non-matching items
             }
-        }
+        });
+    }
 
-        // Get all images
-        var images = document.getElementById("gallery-container").children;
+    // Function to open the modal with the clicked image
+    function openModal(imageUrl) {
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+        modal.style.display = 'flex';
+        modalImage.src = imageUrl;
+    }
 
-        // Add event listener to each image
-        for (var i = 0; i < images.length; i++) {
-            images[i].addEventListener("click", function () {
-                // Get the clicked image
-                var clickedImage = this;
+    // Function to close the modal
+    function closeModal() {
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
+    }
 
-                // Create a modal window
-                var modal = document.createElement("div");
-                modal.classList.add("modal");
+    // Function to toggle the visibility of the gallery
+    function toggleGallery() {
+        const gallery = document.getElementById('gallery-container');
+        gallery.style.display = gallery.style.display === 'none' ? 'grid' : 'none';
+    }
 
-                // Create a close button
-                var closeButton = document.createElement("button");
-                closeButton.textContent = "Close";
-                closeButton.classList.add("close-button");
-                closeButton.onclick = function () {
-                    modal.remove();
-                };
+    // Add click event listeners to images to open them in the modal
+    document.addEventListener('DOMContentLoaded', () => {
+        const galleryItems = document.querySelectorAll('.gallery-item img');
 
-                // Create an enlarged image
-                var enlargedImage = document.createElement("img");
-                enlargedImage.src = clickedImage.querySelector("img").src;
-                enlargedImage.classList.add("enlarged-image");
-                enlargedImage.onclick = function () {
-                    modal.remove();
-                };
-
-                // Add elements to the modal window
-                modal.appendChild(enlargedImage);
-                modal.appendChild(closeButton);
-
-                // Add the modal window to the page
-                document.body.appendChild(modal);
-            });
-        }
-    </script>
-
-
-    <script>
-       let modal = document.getElementById('modal');
-        let modalImage = document.getElementById('modal-image');
-
-        function openModal(imageUrl) {
-            modal.style.display = 'flex';
-            modalImage.src = imageUrl;
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        function toggleGallery() {
-            const gallery = document.getElementById('gallery-container');
-            gallery.style.display = gallery.style.display === 'none' ? 'grid' : 'none';
-        }
-
-        function searchImages() {
-            const searchQuery = document.getElementById('gallery-search-input').value.toLowerCase();
-            const items = document.querySelectorAll('.gallery-item');
-
-            items.forEach(item => {
-                const title = item.querySelector('p').textContent.toLowerCase();
-                if (title.includes(searchQuery)) {
-                    item.classList.remove('highlight');
-                    item.style.display = 'block';
-                } else {
-                    item.classList.add('highlight');
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // Add click event listeners to each image to open in modal
-        document.querySelectorAll('.gallery-item img').forEach(img => {
+        galleryItems.forEach(img => {
             img.addEventListener('click', () => {
                 openModal(img.src);
             });
         });
-    </script>
+    });
+     // Function to handle image upload
+        function uploadImage() {
+            const fileInput = document.getElementById('image-upload-input');
+            const galleryContainer = document.getElementById('gallery-container');
+
+            // Ensure a file is selected
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert('Please select an image to upload.');
+                return;
+            }
+
+            const file = fileInput.files[0];
+
+            // Check if the file is an image
+            if (!file.type.startsWith('image/')) {
+                alert('Only image files are allowed.');
+                return;
+            }
+
+            // Create a FileReader to read the selected file
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                // Create a new gallery item
+                const galleryItem = document.createElement('div');
+                galleryItem.classList.add('gallery-item');
+
+                // Create an image element
+                const img = document.createElement('img');
+                img.src = event.target.result; // Set the image source to the file data
+                img.alt = file.name;
+
+                // Add a paragraph for the image name
+                const imageName = document.createElement('p');
+                imageName.textContent = file.name;
+
+                // Add click event for modal functionality
+                img.addEventListener('click', () => {
+                    openModal(img.src);
+                });
+
+                // Append the image and name to the gallery item
+                galleryItem.appendChild(img);
+                galleryItem.appendChild(imageName);
+
+                // Append the gallery item to the gallery container
+                galleryContainer.appendChild(galleryItem);
+
+                // Clear the file input after upload
+                fileInput.value = '';
+            };
+
+            // Read the file as a Data URL
+            reader.readAsDataURL(file);
+        }
+
+        // Function to open a modal with the clicked image
+        function openModal(imageUrl) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modal-image');
+            modal.style.display = 'flex';
+            modalImage.src = imageUrl;
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        // Add event listeners on DOM load for any existing images
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+
+            galleryItems.forEach(img => {
+                img.addEventListener('click', () => {
+                    openModal(img.src);
+                });
+            });
+        });
+</script>
+
+
     <!-- Footer Section -->
     <footer
         style="background-color: #2f4f7f; color: #fff; padding: 2em 0; width: 100%; box-shadow: 0px -2px 4px rgba(0,0,0,0.1); clear: both;">
