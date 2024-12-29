@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header {
+            background-color: lemonchiffon;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .quiz-container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .options li {
+            margin-bottom: 10px;
+        }
+
+        .options li label {
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height: 2px; background-color: black; animation: animate 5s infinite;"></div>
+    <div class="header">
+        <div class="container">
+            <b> NEWS : </b>
+            <marquee>Intelligence plus curiosity-that is the root of true discovery.</marquee>
+        </div>
+    </div>
+    <div style="height: 2px; background-color: black; animation: animate 5s infinite;"></div>
+    <nav
+        style="background-color: #2f4f7f; color: #fff; padding: 1em; position: sticky; top: 0; width: 100%; z-index: 1000; box-shadow: 0px 2px 4px rgba(0,0,0,0.1);">
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: space-between;">
+            <li style="margin-right: 20px;"><a href="index.html" style="color: #fff; text-decoration: none;">Home</a>
+            </li>
+            <li style="margin-right: 20px;"><a href="gallery.html" class="active"
+                    style="color: #fff; text-decoration: none;">Gallery</a></li>
+            <li style="margin-right: 20px;"><a href="fun-learning.html" style="color: #fff; text-decoration: none;">Fun
+                    Learning</a></li>
+            <li style="margin-right: 20px;"><a href="caution.html"
+                    style="color: #fff; text-decoration: none;">Caution</a></li>
+            <li style="margin-right: 20px;"><a href="about.html" style="color: #fff; text-decoration: none;">About</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="quiz-container">
+        <h2>Quiz</h2>
+        <form id="quiz-form">
+            <div class="question">
+                <h3>Question 1: What is the largest ocean on Earth?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q1-a" name="q1" value="a">
+                        <label for="q1-a">Pacific Ocean</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-b" name="q1" value="b">
+                        <label for="q1-b">Atlantic Ocean</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q1-c" name="q1" value="c">
+                        <label for="q1-c">Indian Ocean</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Question 2: What is the deepest part of the ocean?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q2-a" name="q2" value="a">
+                        <label for="q2-a">Mariana Trench</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q2-b" name="q2" value="b">
+                        <label for="q2-b">Grand Canyon</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q2-c" name="q2" value="c">
+                        <label for="q2-c">Mount Everest</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Question 3: What is the largest underwater mountain range?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q3-a" name="q3" value="a">
+                        <label for="q3-a">Mid-Ocean Ridge</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q3-a-b" name="q3" value="b">
+                        <label for="q3-b"> Andes Mountain Range</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q3-c" name="q3" value="c">
+                        <label for="q3-c"> Rocky Mountain Range</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Question 4: What is the largest underwater cave system?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q4-a" name="q4" value="a">
+                        <label for="q4-a">Sac Actun</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q4-b" name="q4" value="b">
+                        <label for="q4-b">Carlsbad Caverns</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q4-c" name="q4" value="c">
+                        <label for="q4-c">Mammoth Cave System</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 5: What is the deepest underwater lake?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q5-a" name="q5" value="a">
+                        <label for="q5-a">Lake Baikal</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q5-b" name="q5" value="b">
+                        <label for="q5-b">Lake Tanganyika</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q5-c" name="q5" value="c">
+                        <label for="q5-c">Lake Vostok</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 6: What is the largest species of shark?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q6-a" name="q6" value="a">
+                        <label for="q6-a">Whale shark</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q6-b" name="q6" value="b">
+                        <label for="q6-b">Great white shark</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q6-c" name="q6" value="c">
+                        <label for="q6-c">Tiger shark</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Question 7: What is the process by which plants make food underwater?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q7-a" name="q7" value="a">
+                        <label for="q7-a">Respiration</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q7-b" name="q7" value="b">
+                        <label for="q7-b">Photosynthesis</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q7-c" name="q7" value="c">
+                        <label for="q7-c">Decomposition</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 8: What is the largest living structure on Earth?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q8-a" name="q8" value="a">
+                        <label for="q8-a">Great Barrier Reef</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q8-b" name="q8" value="b">
+                        <label for="q8-b">Amazon Rainforest</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q8-c" name="q8" value="c">
+                        <label for="q8-c">Grand Canyon</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 9: What is the deepest part of the ocean in the Atlantic?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q9-a" name="q9" value="a">
+                        <label for="q9-a">Puerto Rico Trench</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q9-b" name="q9" value="b">
+                        <label for="q9-b">South Sandwich Trench</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q9-c" name="q9" value="c">
+                        <label for="q9-c">Peru-Chile Trench</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 10: What is the largest species of squid?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q10-a" name="q10" value="a">
+                        <label for="q10-a">Colossal squid</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q10-b" name="q10" value="b">
+                        <label for="q10-b">Giant squid</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q10-c" name="q10" value="c">
+                        <label for="q10-c">Vampire squid</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 11: What is the process by which ocean water moves from the surface to the deep sea?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q11-a" name="q11" value="a">
+                        <label for="q11-a">Upwelling</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q11-b" name="q11" value="b">
+                        <label for="q11-b">Downwelling</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q11-c" name="q11" value="c">
+                        <label for="q11-c">Ocean currents</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 12: What is the largest coral reef system in the world?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q12-a" name="q12" value="a">
+                        <label for="q12-a">Great Barrier Reef</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q12-b" name="q12" value="b">
+                        <label for="q12-b">Red Sea Coral Reef</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q12-c" name="q12" value="c">
+                        <label for="q12-c">Belize Barrier Reef</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Question 13: What is the deepest underwater volcano?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q13-a" name="q13" value="a">
+                        <label for="q13-a">Kermadec Trench</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q13-b" name="q13" value="b">
+                        <label for="q13-b">Mariana Trench</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q13-c" name="q13" value="c">
+                        <label for="q13-c">Loihi Seamount</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 14: What is the largest species of octopus?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q14-a" name="q14" value="a">
+                        <label for="q14-a">Giant Pacific octopus</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q14-b" name="q14" value="b">
+                        <label for="q14-b">Mimic octopus</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q14-c" name="q14" value="c">
+                        <label for="q14-c">Blue-ringed octopus</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 15: What is the process by which ocean water freezes?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q15-a" name="q15" value="a">
+                        <label for="q15-a">Melting</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q15-b" name="q15" value="b">
+                        <label for="q15-b">Freezing</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q15-c" name="q15" value="c">
+                        <label for="q15-c">Sea ice formation</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 16: What is the largest underwater canyon?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q16-a" name="q16" value="a">
+                        <label for="q16-a">Grand Canyon</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q16-b" name="q16" value="b">
+                        <label for="q16-b">Fish River Canyon</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q16-c" name="q16" value="c">
+                        <label for="q16-c">Monterey Canyon</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 17: What is the deepest underwater hydrothermal vent?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q17-a" name="q17" value="a">
+                        <label for="q17-a">Mid-Ocean Ridge</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q17-b" name="q17" value="b">
+                        <label for="q17-b">Mariana Trench</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q17-c" name="q17" value="c">
+                        <label for="q17-c">Loihi Seamount</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 18: What is the largest species of sea turtle?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q18-a" name="q18" value="a">
+                        <label for="q18-a">Leatherback sea turtle</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q18-b" name="q18" value="b">
+                        <label for="q18-b">Green sea turtle</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q18-c" name="q18" value="c">
+                        <label for="q18-c">Loggerhead sea turtle</label>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Question 19: What is the process by which ocean water circulates?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q19-a" name="q19" value="a">
+                        <label for="q19-a">Ocean currents</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q19-b" name="q19" value="b">
+                        <label for="q19-b">Tides</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q19-c" name="q19" value="c">
+                        <label for="q19-c">Ocean circulation</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="question">
+                <h3>Question 20: What is the largest underwater shipwreck?</h3>
+                <ul class="options">
+                    <li>
+                        <input type="radio" id="q20-a" name="q20" value="a">
+                        <label for="q20-a">Titanic</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q20-b" name="q20" value="b">
+                        <label for="q20-b">Britannic</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="q20-c" name="q20" value="c">
+                        <label for="q20-c">USS Arizona</label>
+                    </li>
+                </ul>
+            </div>
+            <button class="submit-btn" type="submit">Submit Quiz</button>
+        </form>
+    </div>
+
+    <script>
+        // Add event listener to submit button
+        document.querySelector('.submit-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            // Get user answers
+            const userAnswers = {};
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach((radio) => {
+                if (radio.checked) {
+                    userAnswers[radio.name] = radio.value;
+                }
+            });
+            // Check answers and display result
+            const correctAnswers = {
+                q1: 'a',
+                q2: 'a',
+                q3: 'a',
+                q4: 'a',
+                q5: 'a',
+                q6: 'a',
+                q7: 'b',
+                q8: 'a',
+                q9: 'a',
+                q10: 'a',
+                q11: 'b',
+                q12: 'a',
+                q13: 'c',
+                q14: 'a',
+                q15: 'c',
+                q16: 'c',
+                q17: 'a',
+                q18: 'a',
+                q19: 'a',
+                q20: 'a',
+            };
+            let score = 0;
+            Object.keys(userAnswers).forEach((question) => {
+                if (userAnswers[question] === correctAnswers[question]) {
+                    score++;
+                }
+            });
+            const result = `You scored ${score} out of ${Object.keys(correctAnswers).length}!`;
+            alert(result);
+        });
+    </script>
+    <footer
+        style="background-color: #2f4f7f; color: #fff; padding: 2em; width: 100%; box-shadow: 0px -2px 4px rgba(0,0,0,0.1);">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;">
+            <div style="flex-basis: 30%; margin-right: 20px;">
+                <h3>About Us</h3>
+                <p>This is a Underwater exploration website.This will help you to know more about the unknown inside
+                    water and reminds you to not only "fly" but also "dive".</p>
+                <ul style="list-style: none; margin: 0; padding: 0;">
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
+                            style="color: #fff; text-decoration: none;"><i class="fa fa-facebook"
+                                aria-hidden="true"></i></a></li>
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
+                            style="color: #fff; text-decoration: none;"><i class="fa fa-twitter"
+                                aria-hidden="true"></i></a></li>
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
+                            style="color: #fff; text-decoration: none;"><i class="fa fa-instagram"
+                                aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div style="flex-basis: 30%; margin-right: 20px;">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; margin: 0; padding: 0;">
+                    <li><a href="index.html" style="color: #fff; text-decoration: none;">Home</a></li>
+                    <li><a href="gallery.html" style="color: #fff; text-decoration: none;">Gallery</a></li>
+                    <li><a href="fun-learning.html" style="color: #fff; text-decoration: none;">Fun Learning</a></li>
+                    <li><a href="caution.html" style="color: #fff; text-decoration: none;">Caution</a></li>
+                    <li><a href="about.html" style="color: #fff; text-decoration: none;">About</a></li>
+                </ul>
+            </div>
+            <div style="flex-basis: 30%;">
+                <h3>Contact Us</h3>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:sourav.show@gmail.com"
+                        style="color: #fff; text-decoration: none;">info@example.com</a></p>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> +91 88478 93952</p>
+            </div>
+        </div>
+        <div style="background-color: #333; color: #fff; padding: 1em; text-align: center; clear: both;">
+            <p>&copy; 2024 Underwater Exploration. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

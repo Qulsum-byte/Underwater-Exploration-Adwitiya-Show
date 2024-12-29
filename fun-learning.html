@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fun-learning</title>
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header {
+            background-color: lemonchiffon;
+        }
+
+        .box-container {
+            width: 100%;
+            background-color: #FFC5C5;
+            /* Coral baby pink color */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 5px solid #000000;
+            /* 5x size black color border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #452B1F;
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 0;
+            text-decoration: underline;
+            text-underline-offset: 10px;
+        }
+
+        .box h2 {
+            font-size: 24px;
+            color: #000000;
+            margin-top: 0;
+        }
+
+        .box p {
+            font-size: 18px;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #452B1F;
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-top: 0;
+            text-decoration: underline;
+            text-underline-offset: 10px;
+        }
+
+        button:hover {
+            background-color: #F5DEB3;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height: 2px; background-color: black; animation: animate 5s infinite;"></div>
+    <div class="header">
+        <div class="container">
+            <b> NEWS : </b>
+            <marquee>Intelligence plus curiosity-that is the root of true discovery.</marquee>
+        </div>
+    </div>
+    <div style="height: 2px; background-color: black; animation: animate 5s infinite;"></div>
+    <nav
+        style="background-color: #2f4f7f; color: #fff; padding: 1em; position: sticky; top: 0; width: 100%; z-index: 1000; box-shadow: 0px 2px 4px rgba(0,0,0,0.1);">
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; justify-content: space-between;">
+            <li style="margin-right: 20px;"><a href="index.html" style="color: #fff; text-decoration: none;">Home</a>
+            </li>
+            <li style="margin-right: 20px;"><a href="gallery.html" class="active"
+                    style="color: #fff; text-decoration: none;">Gallery</a></li>
+            <li style="margin-right: 20px;"><a href="fun-learning.html" style="color: #fff; text-decoration: none;">Fun
+                    Learning</a></li>
+            <li style="margin-right: 20px;"><a href="caution.html"
+                    style="color: #fff; text-decoration: none;">Caution</a></li>
+            <li style="margin-right: 20px;"><a href="about.html" style="color: #fff; text-decoration: none;">About</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Main Content -->
+    <main>
+        <!-- Fun Learning Section -->
+        <section class="fun-learning" id="fun-learning">
+            <h1 style="font-family: 'Pacifico', cursive;">Fun Learning</h1>
+            <div class="box-container">
+                <div class="box">
+                    <h2>Dive into the World of Oceanic Wonders!</h2>
+                    <p>Welcome to our Fun Learning page, where you'll embark on an exciting journey to discover the
+                        secrets of the ocean! From coral reefs to marine life, we'll take you on a thrilling adventure
+                        to explore the wonders of the underwater world.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Quiz Section -->
+        <section class="quiz" id="quiz" style="margin-top: 50px;">
+            <h1 style="font-family: 'Pacifico', cursive;">Quiz</h1>
+            <div class="box-container" style="background-color: #786C3B;">
+                <div class="box" style="border: 5px solid #964B00; background-color: #FFFFFF;">
+                    <h2 style="color: #000000;">Test Your Ocean Knowledge!</h2>
+                    <p style="color: #000000;">Test your knowledge of the ocean and its wonders! Take our quiz and
+                        discover how much you know about the underwater world. From marine life to ocean currents, we'll
+                        challenge your knowledge and keep you engaged!</p>
+                    <button
+                        style="background-color: #964B00; color: #FFFFFF; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;"
+                        onclick="window.location.href='quiz.html'">
+                        Start Quiz
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="ocean-poetry" id="ocean-poetry" style="margin-top: 50px;">
+            <h1 style="font-family: 'Pacifico', cursive;">Ocean Poetry</h1>
+            <div class="box-container" style="background-color: yellow;">
+                <div class="box" style="border: 5px solid black; background-color: #FFFFFF;">
+                    <h2 style="color: #000000;">Immerse Yourself in Ocean Poetry</h2>
+                    <p style="color: #000000;">Immerse yourself in the majestic world of ocean poetry. Explore the
+                        rhythmic waves, majestic creatures, and hidden treasures of the deep blue sea. Let the ocean's
+                        roar inspire your imagination and creativity!</p>
+                    <button
+                        style="background-color: black; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;"
+                        onclick="window.location.href='ocean-poetry-quiz.html'"> Dive into Ocean Poetry </button>
+                </div>
+            </div>
+        </section>
+        <div style="width: 100%; margin-top: 50px;">
+
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 48px; color: #333; text-align: center;">Know
+                More</h1>
+
+            <div style="background-color: #ADD8E6; padding: 20px; box-sizing: border-box;">
+
+                <div style="background-color: #FFFFFF; border: 5px solid #000000; padding: 20px;">
+
+                    <h1
+                        style="font-family: 'Playfair Display', serif; font-size: 36px; color: #333; text-align: center;">
+                        Fun-Facts</h1>
+
+                    <div
+                        style="font-family: 'Merriweather', serif; font-size: 18px; color: #333; text-align: justify; padding: 20px;">
+
+                        Welcome to our Fun-Facts page! Here, you'll discover a treasure trove of fascinating facts and
+                        trivia about the ocean. From the deepest depths to the sunniest surfaces, we'll delve into the
+                        wonders of the marine world. Get ready to be amazed and inspired by the incredible secrets of
+                        the sea!
+
+                    </div>
+
+                    <a href="Fun-Fact.html"><button
+                            style="background-color: #A1C9F2; color: #fff; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; font-family: 'Merriweather', serif; transition: 0.3s; width: 100%; text-align: center;"
+                            onmouseover="this.style.background='#87CEEB'"
+                            onmouseout="this.style.background='#A1C9F2'">Treasure of Information</button></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+    <footer
+        style="background-color: #2f4f7f; color: #fff; padding: 2em; width: 100%; box-shadow: 0px -2px 4px rgba(0,0,0,0.1);">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;">
+            <div style="flex-basis: 30%; margin-right: 20px;">
+                <h3>About Us</h3>
+                <p>This is a Underwater exploration website.This will help you to know more about the unknown inside
+                    water and reminds you to not only "fly" but also "dive".</p>
+                <ul style="list-style: none; margin: 0; padding: 0;">
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
+                            style="color: #fff; text-decoration: none;"><i class="fa fa-facebook"
+                                aria-hidden="true"></i></a></li>
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
+                            style="color: #fff; text-decoration: none;"><i class="fa fa-twitter"
+                                aria-hidden="true"></i></a></li>
+                    <li style="display: inline-block; margin-right: 10px;"><a href="#" target="_blank"
+                            style="color: #fff; text-decoration: none;"><i class="fa fa-instagram"
+                                aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            <div style="flex-basis: 30%; margin-right: 20px;">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; margin: 0; padding: 0;">
+                    <li><a href="index.html" style="color: #fff; text-decoration: none;">Home</a></li>
+                    <li><a href="gallery.html" style="color: #fff; text-decoration: none;">Gallery</a></li>
+                    <li><a href="fun-learning.html" style="color: #fff; text-decoration: none;">Fun Learning</a></li>
+                    <li><a href="caution.html" style="color: #fff; text-decoration: none;">Caution</a></li>
+                    <li><a href="about.html" style="color: #fff; text-decoration: none;">About</a></li>
+                </ul>
+            </div>
+            <div style="flex-basis: 30%;">
+                <h3>Contact Us</h3>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:sourav.show@gmail.com"
+                        style="color: #fff; text-decoration: none;">info@example.com</a></p>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> +91 88478 93952</p>
+            </div>
+        </div>
+        <div style="background-color: #333; color: #fff; padding: 1em; text-align: center; clear: both;">
+            <p>&copy; 2024 Underwater Exploration. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
